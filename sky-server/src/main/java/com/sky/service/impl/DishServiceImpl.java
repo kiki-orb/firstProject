@@ -156,45 +156,45 @@ public class DishServiceImpl implements DishService {
         }
 
     }
-//
-//    /**
-//     * 根据分类id查询菜品
-//     * @param categoryId
-//     * @return
-//     */
-//    @Override
-//    public List<Dish> list(Long categoryId) {
-//        Dish dish = Dish.builder()
-//                .categoryId(categoryId)
-//                .status(StatusConstant.ENABLE)
-//                .build();
-//        return dishMapper.list(dish);
-//    }
-//
-//    /**
-//     * 条件查询菜品和口味
-//     * @param dish
-//     * @return
-//     */
-//    @Override
-//    public List<DishVO> listWithFlavor(Dish dish) {
-//        List<Dish> dishList = dishMapper.list(dish);
-//
-//        ArrayList<DishVO> dishVOArrayList = new ArrayList<>();
-//
-//        dishList.forEach(d->{
-//            DishVO dishVO = new DishVO();
-//            BeanUtils.copyProperties(d, dishVO);
-//
-////            根据菜品id查询对应的口味
-//            List<DishFlavor> flavors = dishFlavorMapper.getByDishId(d.getId());
-//
-//            dishVO.setFlavors(flavors);
-//            dishVOArrayList.add(dishVO);
-//        });
-//
-//        return dishVOArrayList;
-//    }
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public List<Dish> list(Long categoryId) {
+        Dish dish = Dish.builder()
+                .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
+                .build();
+        return dishMapper.list(dish);
+    }
+
+    /**
+     * 条件查询菜品和口味
+     * @param dish
+     * @return
+     */
+    @Override
+    public List<DishVO> listWithFlavor(Dish dish) {
+        List<Dish> dishList = dishMapper.list(dish);
+
+        ArrayList<DishVO> dishVOArrayList = new ArrayList<>();
+
+        dishList.forEach(d->{
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(d, dishVO);
+
+//            根据菜品id查询对应的口味
+            List<DishFlavor> flavors = dishFlavorMapper.getByDishId(d.getId());
+
+            dishVO.setFlavors(flavors);
+            dishVOArrayList.add(dishVO);
+        });
+
+        return dishVOArrayList;
+    }
 //
 //    /**
 //     * 菜品起售停售
